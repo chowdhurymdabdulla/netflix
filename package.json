@@ -2,8 +2,9 @@
   "name": "netflix-react",
   "version": "1.0.0",
   "description": "complete intro to React",
-  "main": "index.js",
+  "main": "./js/ClientApp.jsx",
   "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "standard",
     "build": "webpack",
     "watch": "webpack --watch"
@@ -11,6 +12,7 @@
   "author": "Protek-Office",
   "license": "MIT",
   "dependencies": {
+    "babel-preset-stage-1": "^6.1.18",
     "axios": "0.9.1",
     "express": "4.13.4",
     "lodash": "4.6.1",
@@ -42,7 +44,8 @@
     "nyc": "^6.0.0",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^1.17.3",
-    "webpack": "^1.12.13"
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.4.0"
   },
   "directories": {
     "test": "test"

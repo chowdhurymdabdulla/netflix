@@ -5,10 +5,8 @@ module.exports = {
   entry: './js/ClientApp.jsx',
   output: {
     path: path.join(__dirname, '/public'),
+    publicPath: '/public',
     filename: 'bundle.js'
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
   },
   stats: {
     colors: true,
@@ -19,19 +17,30 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader',
         exclude: /node_modules/
       }
     ],
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
+    loaders: [{
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015', 'stage-1']
       }
+    },
+    {
+      test: /\.json$/,
+      loader: 'json-loader'
+    }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json']
+  },
+  devtools: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    inline: true
   }
 }
